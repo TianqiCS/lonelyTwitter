@@ -19,6 +19,11 @@ public abstract class Tweet {
         this.date = new Date();
     }
 
+    public Tweet() {
+        this.message = "";
+        this.date = new Date();
+    }
+
     //methods
     public void addMood(Mood mood) {
         moods.add(mood);
@@ -36,6 +41,11 @@ public abstract class Tweet {
         }
         return str.toString();
 
+    }
+
+    @Override
+    public String toString() {
+        return this.date.toString() + " | "+this.message;
     }
 
     // getters and setters
