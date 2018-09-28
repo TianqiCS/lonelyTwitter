@@ -43,10 +43,24 @@ public class LonelyTwitterActivity extends Activity {
 		Button saveButton = (Button) findViewById(R.id.save);
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
 
+		Button clearButton = (Button) findViewById(R.id.clear);
+
+        clearButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                setResult(RESULT_OK);
+                tweets.clear();
+                adapter.notifyDataSetChanged();
+                saveInFile();
+//				finish();
+
+            }
+        });
+
 		saveButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-//				setResult(RESULT_OK);
+				setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
 				ImportantTweet newTweet = new ImportantTweet();
 				try {
@@ -69,13 +83,16 @@ public class LonelyTwitterActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onStart();
 		loadFromFile();
+		if (tweets == null) {
+            System.out.println("It is NULLLLLLLLLLLLL");
+            tweets = new ArrayList<Tweet>();
+        }
 		adapter = new ArrayAdapter<Tweet>(this,
 				R.layout.list_item, tweets);
 		oldTweetsList.setAdapter(adapter);
 	}
 
 	private void loadFromFile() {
-		ArrayList<String> tweets = new ArrayList<String>();
 		try {
 			FileInputStream fis = openFileInput(FILENAME);
 			InputStreamReader isr = new InputStreamReader(fis);
