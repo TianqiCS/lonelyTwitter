@@ -3,6 +3,10 @@ package ca.ualberta.cs.lonelytwitter;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Base class of Tweet
+ */
+
 public abstract class Tweet {
     private String message;
     private Date date;

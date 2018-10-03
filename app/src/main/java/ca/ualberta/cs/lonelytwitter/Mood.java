@@ -1,6 +1,9 @@
 package ca.ualberta.cs.lonelytwitter;
 
 import java.util.Date;
+/**
+ * a base class for Mood
+ */
 
 public abstract class Mood {
     private Date date;
