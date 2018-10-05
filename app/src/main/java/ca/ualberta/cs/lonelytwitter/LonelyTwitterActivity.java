@@ -38,7 +38,12 @@ public class LonelyTwitterActivity extends Activity {
 	private ArrayAdapter<Tweet> adapter;
 
 	
-	/** Called when the activity is first created. */
+	/**
+	 *  Called when the activity is first created.
+     * @param savedInstanceState Bundle
+     * @return
+     * @throws
+     */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -84,6 +89,13 @@ public class LonelyTwitterActivity extends Activity {
 	}
 
 	@Override
+
+    /**
+     * start the activity
+     * @param
+     * @return
+     * @throw
+     */
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
@@ -97,6 +109,12 @@ public class LonelyTwitterActivity extends Activity {
 		oldTweetsList.setAdapter(adapter);
 	}
 
+    /**
+     * Load from the gson file
+     * @param
+     * @return
+     * @throws Exception
+     */
 	private void loadFromFile() {
 		try {
 			FileInputStream fis = openFileInput(FILENAME);
@@ -116,7 +134,13 @@ public class LonelyTwitterActivity extends Activity {
 		}
 		//return tweets.toArray(new String[tweets.size()]);
 	}
-	
+
+    /**
+     * save the gson file
+     * @param
+     * @return
+     * @throws Exception
+     */
 	private void saveInFile() {
 		try {
             FileOutputStream fos = openFileOutput(FILENAME,0);
