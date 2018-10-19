@@ -2,6 +2,8 @@ package ca.ualberta.cs.lonelytwitter;
 
 import android.test.ActivityInstrumentationTestCase2;
 
+import java.util.ArrayList;
+
 public class TweetListTest extends ActivityInstrumentationTestCase2 {
     public TweetListTest() {
         super(LonelyTwitterActivity.class);
@@ -44,4 +46,21 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
         assertEquals(returnedTweet.getDate(), tweet.getDate());
     }
 
+    public void testGetTweets(){
+        TweetList tweets = new TweetList();
+        Tweet tweet = new NormalTweet("Tweet");
+        tweets.addTweet(tweet);
+
+        ArrayList<Tweet> ts = tweets.getTweets();
+        assertEquals(ts.get(0), tweet);
+
+
+    }
+
+    public void testGetCount(){
+        TweetList tweets = new TweetList();
+        Tweet tweet = new NormalTweet("Tweet");
+        tweets.addTweet(tweet);
+        assertEquals(tweets.getCount(),1);
+    }
 }

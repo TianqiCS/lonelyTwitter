@@ -9,8 +9,11 @@ import java.util.ArrayList;
 public class TweetList {
     private ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 
-    public void addTweet(Tweet tweet) {
-        tweets.add(tweet);
+    public void addTweet(Tweet tweet) throws IllegalArgumentException {
+        if (tweets.contains(tweet)) {throw new IllegalArgumentException();}
+        else {
+            tweets.add(tweet);
+        }
     }
 
     public boolean hasTweet(Tweet tweet) {
@@ -23,5 +26,14 @@ public class TweetList {
 
     public Tweet getTweet(int index) {
         return tweets.get(index);
+    }
+
+    public ArrayList<Tweet> getTweets(){
+        return tweets;
+    }
+
+
+    public int getCount(){
+        return tweets.size();
     }
 }
